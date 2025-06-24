@@ -1,1 +1,57 @@
 # Upload and Scan your code for Veracode Static Analysis
+
+name: static-scan
+
+on:
+  workflow_dispatch:
+
+jobs:
+  checkout-and-package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+      - name: setup node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: '20.14.0'
+
+      - name: Zip app files
+        run: | 
+          rm -rf verademo-python.zip
+          zip -r verademo-python.zip .
+
+      - name: save artifact
+        uses: actions/upload-artifact@v3
+        with: 
+           name: scan-target
+           path: verademo-python.zip
+           
+  upload-scan: 
+    needs: checkout-and-package
+    runs-on: ubuntu-latest
+    container: 
+      image: veracode/api-wrapper-java:latest
+      options: --user root
+      
+    steps: 
+      - name: get artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: scan-target
+
+        # Debugging steps
+      - name: debug
+        run: |
+          pwd
+          ls -l
+
+      - name: scan
+        run: |
+          java -jar /opt/veracode/api-wrapper.jar \
+            -vid ${{ secrets.VERACODE_API_ID }} -vkey ${{ secrets.VERACODE_API_KEY }} \
+            -action UploadAndScan -appname "verademo-python" -createprofile false \
+            -filepath verademo-python.zip -version "Github $GITHUB_RUN_NUMBER"
+        # continue-on-error: true
