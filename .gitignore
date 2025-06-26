@@ -4,6 +4,6 @@ images/
 
 # ignore virtual environment
 env
-
+.venv/
 # ignore CLI-created package for static scanning
 verademo-python.zip
