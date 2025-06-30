@@ -2,7 +2,10 @@
 
 name: static_demo
 
-on: workflow_dispatch
+on: 
+  pull_request:
+    branches: 
+      - main
 
 jobs:
   static_analysis:

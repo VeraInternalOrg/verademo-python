@@ -8,7 +8,7 @@
 #   run the SCA agent scan
 #   run the Container scan
 
-name: the-essentials
+name: sca-scan
 
 on:
   workflow_dispatch:
