@@ -54,6 +54,6 @@ jobs:
           vid: ${{ secrets.VERACODE_API_ID }}
           vkey: ${{ secrets.VERACODE_API_KEY }}
           file: "verademo-python.zip"
-          veracode_policy_name: "Veracode Pipeline Scan Policy"
+          veracode_policy_name: "VAST Policy"
           fail_build: true
 
