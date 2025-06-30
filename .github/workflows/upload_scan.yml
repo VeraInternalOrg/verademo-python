@@ -3,9 +3,7 @@
 name: static_demo
 
 on: 
-  pull_request:
-    branches: 
-      - main
+  workflow_dispatch:
 
 jobs:
   static_analysis:
