@@ -51,8 +51,8 @@ jobs:
         id: pipeline-scan
         uses: veracode/Veracode-pipeline-scan-action@v1.0.12
         with:
-          vid: ${{ secrets.VID }}
-          vkey: ${{ secrets.VKEY }}
+          vid: ${{ secrets.VERACODE_API_ID }}
+          vkey: ${{ secrets.VERACODE_API_KEY }}
           file: "verademo-python.zip"
           veracode_policy_name: "Veracode Pipeline Scan Policy"
           fail_build: true
