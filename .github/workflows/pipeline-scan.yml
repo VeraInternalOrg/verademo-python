@@ -54,10 +54,5 @@ jobs:
           vid: ${{ secrets.VERACODE_API_ID }}
           vkey: ${{ secrets.VERACODE_API_KEY }}
           file: "verademo-python.zip"
-          veracode_policy_name: "VAST Policy"
           fail_build: false
-          store_baseline_file: true
-          store_baseline_file_branch: branch1
-          create_baseline_from: standard
-          baseline_file: "verademo-python-baseline.json"
 
