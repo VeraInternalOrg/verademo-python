@@ -21,10 +21,10 @@ jobs:
          ./veracode package -s . --output verascan -a
 
       - name: SAST Scan
-        continue-on-error: true
+        continue-on-error: false
         env:
-         VERACODE_API_KEY_ID: ${{ secrets.VERACODE_API_KEY_ID }}
-         VERACODE_API_KEY_SECRET: ${{ secrets.VERACODE_API_KEY_SECRET }}
+         VERACODE_API_KEY_ID: ${{ secrets.VERACODE_API_ID }}
+         VERACODE_API_KEY_SECRET: ${{ secrets.VERACODE_API_KEY }}
         run: |
          ./veracode static scan ./verascan/veracode-auto-pack-verademo-python-python.zip --summary-output sast-summary.txt
       
@@ -57,8 +57,8 @@ jobs:
         id: convert
         uses: Veracode/veracode-fix@main
         with:
-          vid: ${{ secrets.VERACODE_API_KEY_ID }}
-          vkey: ${{ secrets.VERACODE_API_KEY_SECRET }}
+          vid: ${{ secrets.VERACODE_API_ID }}
+          vkey: ${{ secrets.VERACODE_API_KEY }}
           inputFile: results.json
           source_base_path_1: "verademo-python/:"
           # source_base_path_2: "WEB-INF:src/main/webapp/WEB-INF"
