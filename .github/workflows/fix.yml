@@ -64,7 +64,7 @@ jobs:
           # source_base_path_2: "WEB-INF:src/main/webapp/WEB-INF"
           language: python
           cwe: 89 # SQL Injection
-          fixType: 'batch'
+          fixType: 'single'
           debug: false
           prComment: true
           files: 'all'
