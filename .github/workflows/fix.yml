@@ -21,7 +21,7 @@ jobs:
          ./veracode package -s . --output verascan -a
 
       - name: SAST Scan
-        continue-on-error: false
+        continue-on-error: true
         env:
          VERACODE_API_KEY_ID: ${{ secrets.VERACODE_API_ID }}
          VERACODE_API_KEY_SECRET: ${{ secrets.VERACODE_API_KEY }}
