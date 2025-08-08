@@ -70,6 +70,6 @@ jobs:
           files: 'all'
           codeSuggestion: false
           createPR: true
-          token: ${{ secrets.PAT_TOKEN_SUPREME }}
+          #token: ${{ secrets.PAT_TOKEN_SUPREME }}
 
            
