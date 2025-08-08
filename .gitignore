@@ -4,6 +4,10 @@ images/
 
 # ignore virtual environment
 env
+.env/
 .venv/
 # ignore CLI-created package for static scanning
 verademo-python.zip
+
+# phylum (Just included for now)
+.phylum_project
