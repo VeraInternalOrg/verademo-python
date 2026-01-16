@@ -1,7 +1,8 @@
 name: Run-Fixes
 
 on:
-  workflow_dispatch:
+  pull_request:
+    branches: [main]
   
 
 jobs:
@@ -54,7 +55,7 @@ jobs:
 
       - name: Create fixes from static findings
         id: convert
-        uses: Veracode/veracode-fix@main
+        uses: Veracode/veracode-fix@v1.0.4
         with:
           vid: ${{ secrets.VERACODE_API_ID }}
           vkey: ${{ secrets.VERACODE_API_KEY }}
@@ -63,7 +64,7 @@ jobs:
           # source_base_path_2: "WEB-INF:src/main/webapp/WEB-INF"
           language: python
           cwe: 89 # SQL Injection
-          fixType: 'single'
+          fixType: 'batch'
           debug: false
           prComment: true
           files: 'all'
